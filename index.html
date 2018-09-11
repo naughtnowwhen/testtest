@@ -10,6 +10,8 @@
 
       <h1>hello there</h1>
 
+      <p id='startingnumbers'> numbers to be multiplied </p>
+
       <p>click the button to multiply the numbers</p>
   
       <p>mutliply with : <input type="number" id="multiplyBy" value="2"> </p>
@@ -20,6 +22,8 @@
   
       <script>
       var nums = [10,15,27,36];
+
+      document.getElementById('startingnumbers').innerHTML += '=' + nums;
   
       function multiplyElement(num) {
       return num * document.getElementById("multiplyBy").value;
