@@ -7,6 +7,39 @@
 
   </head>
   <body>
+
+
+    </head>
+    <body>
+  
+      <h1>hello there</h1>
+  
+      <p>click the button to multiply the numbers</p>
+  
+      <p>mutliply with : <input type="number" id="multiplyBy" value="2"> </p>
+  
+      <button onclick="mapfunction()"> click here</button>
+  
+      <p> new array: <span id="result"></span></p>
+  
+      <script>
+      var nums = [10,15,27,36];
+  
+      function multiplyElement(num) {
+      return num * document.getElementById("multiplyBy").value;
+      }
+  
+      function mapfunction (){
+      document.getElementById("result").innerHTML = nums.map(multiplyElement);
+      }
+    
+      
+      </script>
+  
+      <script src= app.js ></script>
+    </body>
+    
+  </html>
     <script src= app.js ></script>
   </body>
 </html>
