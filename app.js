@@ -1,3 +1,5 @@
+// following the example at https://www.youtube.com/watch?v=US63Q6AL0GI
+
 const myList = ['frogs', 'jackals', 'ducks'];
 
 const listLooker = myList.indexOf('ducks');
