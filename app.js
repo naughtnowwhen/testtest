@@ -1,37 +1,42 @@
+// A simple while loop that checks if the user input is valid. 
+
+
 // create some user stories
 
 //create an array of questions
 
 var arrQuestions = ['am I feeling totally jazzed? ', 'will I ever stop being a soul-less ginger? ', 'am I even doing it right?', 'will I solve this nagging hunger? ', 'will I live to see the joyous day Trump is removed from office?? ','the mountains are calling, must I go? ', 'have rollercoasters sent me into a vomitting panic? ' , 'have I stared to long, drooling, reading and re-reading the restaraunt menu?','was it foolish of me to have that stare down with the eye of the tiger? ', 'considering my gluttony, am I lucky that I don\'t close to Dick\'s burger anymore?', '' ];
 
-//how to grab a random element
-// var grabOne = arrQuestions[Math.floor(Math.random()* arrQuestions.length)];
+                        //how to grab a random element
+                        // var grabOne = arrQuestions[Math.floor(Math.random()* arrQuestions.length)];
 
-// var yesAnswers = ['yes','yea','yep','definitely','uhuh','sure','totally'];
+                        // var yesAnswers = ['yes','yea','yep','definitely','uhuh','sure','totally'];
 
-// var firstQuestion = arrQuestions[Math.floor(Math.random()* arrQuestions.length)];
-
-
-
-// var ask = prompt(firstQuestion);
-// var looker = yesAnswers.indexOf(ask);
+                        // var firstQuestion = arrQuestions[Math.floor(Math.random()* arrQuestions.length)];
 
 
 
-// var asking = prompt(firstQuestion);
-// if (asking !== 'yes') {
-//   alert('please answer again');
-//   prompt(firstQuestion);
-// }
-// else {
-//   alert('thanks for the answer');
-// }
-
-// ooh, i think this is the right idea, but it needs to get cleaned up, separate the functionality, there should be a function that asks the questions and a function that checks against a list of possible answers.
+                        // var ask = prompt(firstQuestion);
+                        // var looker = yesAnswers.indexOf(ask);
 
 
-// var firstQuestion = arrQuestions[Math.floor(Math.random()* arrQuestions.length)];
 
+                        // var asking = prompt(firstQuestion);
+                        // if (asking !== 'yes') {
+                        //   alert('please answer again');
+                        //   prompt(firstQuestion);
+                        // }
+                        // else {
+                        //   alert('thanks for the answer');
+                        // }
+
+                        // ooh, i think this is the right idea, but it needs to get cleaned up, separate the functionality, there should be a function that asks the questions and a function that checks against a list of possible answers.
+
+
+                        // var firstQuestion = arrQuestions[Math.floor(Math.random()* arrQuestions.length)];
+
+
+// !!! Remember that i'm only pushing to this array, i need to pop elsewhere so that I only have one question at a time                        
 var currentQuestion = [];
 
 var randomPickerFunction = function (){
