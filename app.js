@@ -37,12 +37,11 @@ var arrQuestions = ['am I feeling totally jazzed? ', 'will I ever stop being a s
 
 
 // !!! Remember that i'm only pushing to this array, i need to pop elsewhere so that I only have one question at a time                        
-var currentQuestion = [];
-
+// var currentQuestion = [];
 var randomPickerFunction = function (){
   let grabRandomQuestion = arrQuestions[Math.floor(Math.random()* arrQuestions.length)];
-  currentQuestion.push(grabRandomQuestion);
-  console.log(currentQuestion);
+//   currentQuestion.push(grabRandomQuestion);
+//   console.log(currentQuestion);
   let indexChecker = arrQuestions.indexOf(grabRandomQuestion);
   arrQuestions.splice(indexChecker,1);
   return grabRandomQuestion;
@@ -59,30 +58,30 @@ var randomPickerFunction = function (){
 //commented out while working on displayerFunction
 // prompt(randomPickerFunction());
 
-var whatIsHappeningFunction = function(){
-  console.log(arrQuestions);
-  prompt(randomPickerFunction());
-  console.log(arrQuestions);
-};
+// var whatIsHappeningFunction = function(){
+//   console.log(arrQuestions);
+//   prompt(randomPickerFunction());
+//   console.log(arrQuestions);
+// };
 
 // so now that a question is returned from randomPickerFunction, I need to feed that question into a display function. This is a an improvement from the askUser function which tries to handle grabbing a random question and handling the if and else logic of user responses, this is a dirty way of combining too much functionality at once, better to write separate, smaller functions that work together cleanly.
 
 //go clean or go home! try writing a function that just handles the displaying!
 
 // does in fact show up!
-var doesShowUp = [];
+// var doesShowUp = [];
 
-var displayerFunction = function (question){
-  doesShowUp.push(question);
-  return prompt(question);
-};
-
-
-displayerFunction(randomPickerFunction());
+// var displayerFunction = function (question){
+//   doesShowUp.push(question);
+//   return prompt(question);
+// };
 
 
-var response = displayerFunction(randomPickerFunction());
-console.log(response, ',this is the response');
+// displayerFunction(randomPickerFunction());
+
+
+// var response = displayerFunction(randomPickerFunction());
+// console.log(response, ',this is the response');
 
 
 //response is the user response for each question.
@@ -99,32 +98,32 @@ inAskAGain = [];
 
 
 
-var logic = function (stringResponse) {
-  console.log('STRING RESPONSE', stringResponse);
+// var logic = function (stringResponse) {
+//   console.log('SHOWING UP', stringResponse);
 
-  if (stringResponse === 'yes'){
-    return true;
-  }
-  else if (stringResponse === 'no')
-    return false;
-  else
-    alert ('sorry, i didn\'t catch that, could you try again?');
-  let askAgain = (prompt(currentQuestion)).toString();
+//   if (stringResponse === 'yes'){
+//     return true;
+//   }
+//   else if (stringResponse === 'no')
+//     return false;
+//   else
+//     alert ('sorry, i didn\'t catch that, could you try again?');
+//   let askAgain = (prompt(currentQuestion)).toString();
 
 
-  console.log(askAgain);
+//   console.log(askAgain);
   // pushing to see what shows up, two strings show up, that it's pushing two strings is the problem.
-  inAskAGain.push(askAgain);
+//   inAskAGain.push(askAgain);
   // interesting, in Chrome Dev Tools when I call logic('yes') or logic('no') it resolves to true and false respsectively, as I want. and when I call it with gibberish, it responds correctly, logic('gibberish') alerts my sorry statement (line 99), and then it prompts them again with the current question, then when I either enter yes, or no, as the function expects, then it works. so from Dev tools the function works as intended, but running the whole program results in two many reprompts of the current question.
-  logic(askAgain);
+//   logic(askAgain);
 
 
   //ok cool, this displays another question but it's a different question, I want the same, how to do that?
   // displayerFunction(randomPickerFunction());
 //   prompt(currentQuestion);
-};
+// };
 
-logic(response);
+// logic(response);
 // console.log(logic(response));
 
 
