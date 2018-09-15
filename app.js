@@ -10,9 +10,21 @@
 
 
 
-var myObj1 = {name : 'info', index : 0, 0 : 'a', 1 : 'b', 2 : 'c'};
-var myObj2 = {name : 'goose',index : 1, exists: this, soundslike : 'honk'};
-var myObj3 = {name : 'gander',index : 2, kind : false};
+// var myObj1 = {name : 'info', index : 0, 0 : 'a', 1 : 'b', 2 : 'c'};
+// var myObj2 = {name : 'goose',index : 1, exists: this, soundslike : 'honk'};
+// var myObj3 = {name : 'gander',index : 2, kind : false};
+
+var question1 = 'I am hungry';
+var answers1 = ['yes','no','i dont care',' whatever','it literally doesnt matter']
+
+var question1 = {question : question1,
+    answer : answer1,
+    questionType: 'multipleChoice'
+};
+
+questions = [question1,];
+
+for (var )
 
 var BigObject = {};
 
