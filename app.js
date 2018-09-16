@@ -1,6 +1,41 @@
 //countries
 var countries = ['Canada', 'Chile', 'France', 'UAE', 'Brazil'];
 
+var askerFunction = function (question) {
+  // console.log(question, ' the questions');
+  var asker = prompt(question, 'im prompting');
+  //   userGuess.push(question);
+  // var smallObj.asker = question[];
+  // console.log(question,'smallObj.asker[i]');
+  return asker;
+};
+
+
+firstObj = {
+  country : 'Canada',
+  correctAnswer : 'yes',
+  boolCorrect : false,
+  userGuess : askerFunction(this.country),
+  attempts : [],
+  correctMessage : 'yep, ive been to Canada',
+  wrongMessage : 'sorry, guess again',
+  hints : ['maple syrup', 'hockey','moose']
+};
+
+
+
+
+//something like this
+// var ask = askedFunction () {var asked = prompt('have I been to' + firstObj.country) return asked};
+
+//eventually it'll look something like this.
+// firstObj.prototype.askerFunction = {
+//     if (if userGuess.includes(correctAnswer)){
+//     this.boolCorrect = true;
+//     this.attempts++;
+//     };
+
+
 
 //look in the read me file for 2 examples of smallObject examples that could go in the big objects.
 
@@ -14,7 +49,7 @@ userGuess = [];
 
 var bigObj = {};
 var smallObj = {
-    asker : [],
+  asker : [],
 
 };
 
@@ -30,26 +65,26 @@ var smallObj = {
 //testing for loop
 
 for (var j = 0; i < countries.length; i++) {
-    console.log(countries[j]);
+  console.log(countries[j]);
 }
 // for loop test passes
 
 
 for (var i = 0; i < countries.length; i++) {
-    // console.log(countries[i], 'show');
-// -------------AskerFunction-------------------
-  var AskerFunction = function (question) {
+  // console.log(countries[i], 'show');
+// -------------askerFunction-------------------
+  var askerFunction = function (question) {
     // console.log(question, ' the questions');
     var asker = prompt(question, 'im prompting');
     userGuess.push(question);
-    
+
     // var smallObj.asker = question[];
     // console.log(question,'smallObj.asker[i]');
 
     return asker;
-  }
+  };
 
-//-----------------<<<AskerFunction--------------
+//-----------------<<<askerFunction--------------
 
 //     //does smallObj need an [i]?
 //   // smallObj = {
@@ -57,31 +92,32 @@ for (var i = 0; i < countries.length; i++) {
 //   //     CorrectAnswer[i]: [i],
 //   //     'boolCorrect': boolCorrect;
 //   //     userResponse: userGuess[i];
-  
+
 //   // }
 //   //Asks them a question
 
 //   };
-//   AskerFunction(countries[i]);
+//   askerFunction(countries[i]);
 // console.log(countries[i]);
-  
+
 //   let xHolder = [];
 //     let [i] = Object.entries( smallObj.asker);
 //     xHolder.push(i);
 // //   bigObj = Object.entries( smallObj.asker);
 
 
-//   AskerFunction(countries[i]);
+//   askerFunction(countries[i]);
 
 }
 
 
-console.log(AskerFunction(countries[0]));
+//askerFunctionPrompt
+// console.log(askerFunction(countries[0]));
 
 
 
 
-//   AskerFunction(countries[i]);
+//   askerFunction(countries[i]);
 
 
 
@@ -98,7 +134,7 @@ console.log(AskerFunction(countries[0]));
 
 // }
 // //for
-// // functionPromptedEval(AskerFunction(prompted, countries, boolCorrect));
+// // functionPromptedEval(askerFunction(prompted, countries, boolCorrect));
 
 // //
 
