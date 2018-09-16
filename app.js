@@ -65,6 +65,25 @@ firstObj = {
 // -------------- !!! relevant observation in the haze of codeblindness  --------------------
 // I realized i'm not able to call this.country for the 'checker' key below, not remembering i was able to call this.country as an argument to askerFunction that belongs to the key 'userGuess'. What's the important difference here? is the function what allows for this?
 // need to experiment more.
+
+// interesting, i know that firstObj.userGuess is associated with a function, so how to call it as a function through firstObj.userguess_____ ?
+// firstObj.userGuess results in whatever the user entered to the response.
+// firstObj.userGuess() ... results in
+// TypeError: firstObj.userGuess is not a function
+// and I know that it's not a function, but it's paired with one! So how to call its pair?
+// i'm reminded of Object.values
+// because the function to call is a value paired with my callable key, perhaps i can call it with something like
+
+// Object.values(firstObj)
+
+
+// better yet, something more targeted... Object.values(firstObj.userguess)
+// that's not the execution, but it is the idea.
+
+// ----------------- !!! Oh, i think it's because askerFunction is returning down to a value, in this case a string... so for troubleshooting, comment out the return and just console.log or alert
+
+
+
 // -------------- !!! relevant observation in the haze of codeblindness  --------------------
 
 
