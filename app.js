@@ -52,8 +52,58 @@ firstObj = {
   attempts : [],
   correctMessage : 'yep, ive been to Canada',
   wrongMessage : 'sorry, guess again',
-  hints : ['maple syrup', 'hockey','moose']
+  hints : ['maple syrup', 'hockey','moose'],
+
+// --------------------------- wondering about this. access --------------------------- 
+
+//                   ------- reason for wanting this.access -----
+// the following is a key called 'checker' only for troubleshooting purposes,
+// the first implementation i want to do with this. is to make a key called something like truthCheckerFunction, whose property is a call to that function (prototype?) with this.correctAnswer and this.userGuess as arguments, make the comparison, and if they match,
+// to set this.boolCorrect to true.
+//                   ---<<<-- reason for wanting this.access -----
+
+// -------------- !!! relevant observation in the haze of codeblindness  --------------------
+// I realized i'm not able to call this.country for the 'checker' key below, not remembering i was able to call this.country as an argument to askerFunction that belongs to the key 'userGuess'. What's the important difference here? is the function what allows for this?
+// need to experiment more.
+// -------------- !!! relevant observation in the haze of codeblindness  --------------------
+
+
+
+//   checker : firstObj.country,
+//   checker : firstObj,
+//   checker : country
+//   checker : this.country
+//  all result in errors, how to access neighbor values from inside the object
+//  I think this is an example of needing a constructor, for all this information to inherit
+//  this. accesibility. 
+// hmm, so checker : country results in error, country is undefined
+// checker : this.country results in undefined. 
+  
+
+// ------------<<<------------ wondering about this. access --------------------------- 
+
+
+
+// --------------------------- experimenting with this. access --------------------------- 
+
+// And how to check? Copy paste this firstObj and refactor it into a constructor? So that i can check for this. access?
+
+// or just new firstObj?
+// haha, tried to cheat and wrote ...
+
+// var firstObjvar = new firstObj;
+
+// which results in not a constructor error, which leads me to believe that yes, i need a constructor.
+
+
+// -----------------<<<------- experimenting with this. access --------------------------- 
+
+
+
+
 };
+
+
 
 
 
