@@ -25,6 +25,8 @@ firstObj = {
 
 
 
+
+
 //something like this
 // var ask = askedFunction () {var asked = prompt('have I been to' + firstObj.country) return asked};
 
@@ -41,7 +43,7 @@ firstObj = {
 
 
 
-//answer
+// these global vars ought to be migrated into each small object.
 CorrectAnswer = ['y', 'n,', 'y', 'y'];
 boolCorrect = false;
 var correctCounter = [];
@@ -50,29 +52,25 @@ userGuess = [];
 var bigObj = {};
 var smallObj = {
   asker : [],
-
 };
 
 //pseudocode for the concept of setting smallObj.asker equal to the first question in the array of countries
 //
-
-
-
 // smallObj.asker = CorrectAnswer[0];
 
-//for loop explicitly set to one itertion for testing
 
 //testing for loop
-
 for (var j = 0; i < countries.length; i++) {
   console.log(countries[j]);
 }
-// for loop test passes
+// for loop test passes, which of course it would, the problem was further down the line
 
 
 for (var i = 0; i < countries.length; i++) {
   // console.log(countries[i], 'show');
-// -------------askerFunction-------------------
+
+  // i can comment out this askerFunction since i migrated it to the top... think about a good place to put it.
+  // -------------askerFunction-------------------
   var askerFunction = function (question) {
     // console.log(question, ' the questions');
     var asker = prompt(question, 'im prompting');
@@ -84,29 +82,45 @@ for (var i = 0; i < countries.length; i++) {
     return asker;
   };
 
-//-----------------<<<askerFunction--------------
+//-----------------<<<askerFunction-----------------------------------
 
-//     //does smallObj need an [i]?
-//   // smallObj = {
-//   //     countries[i]: [i],
-//   //     CorrectAnswer[i]: [i],
-//   //     'boolCorrect': boolCorrect;
-//   //     userResponse: userGuess[i];
+// ???-------------does smallObj need an [i]?
+// well, it depends on how to think about the small objects, if each smallObject is single collection of a question, answer, bool, userGuess, etc... then no, it wouldn't need an iterator, but if considering another class of small objects, like a smallObject that just has an array of questions, then might consider an iterator, but the goal is to get away from the iterator and use methods like .includes to replace iteration.    
+// ???------<<<----does smallObj need an [i]?-------------------------
 
-//   // }
-//   //Asks them a question
 
-//   };
-//   askerFunction(countries[i]);
-// console.log(countries[i]);
 
+//------------------------- smallObject vs. bigObject distinction---------------------------
+// in coming back later and looking at this, it looks like the following pseudocode is the idea of the bigObject, not small, the iterator implies that a for loop is going to create a new key value pair for each country, correctAnswer, etc, but that's the job of the bigObject, to contain collections of info, while smallObjects, just contain single instances for simplicity and are managed collectively with bigObjects.
+
+  // smallObj = {
+  //     countries[i]: [i],
+  //     CorrectAnswer[i]: [i],
+  //     'boolCorrect': boolCorrect;
+  //     userResponse: userGuess[i];
+  // }
+
+//-------------<<<--------- smallObject vs. bigObject distinction---------------------------
+
+
+
+//------------------------thinking of ways to feed smallObjects info into big objects-------
 //   let xHolder = [];
 //     let [i] = Object.entries( smallObj.asker);
 //     xHolder.push(i);
-// //   bigObj = Object.entries( smallObj.asker);
+// //   bigObj[i] = xholder[i];
+//-------------<<<--------thinking of ways to feed smallObjects info into big objects-------
 
 
+//-------------an array iterator way of thinking of calling askerFunction on countries
+// The smallObject version is to call ask function internally as a key that calls the value
+// which is a call on askerFunction, passing this.country
 //   askerFunction(countries[i]);
+//-------------an array iterator way of thinking of calling askerFunction on countries
+
+//-------------------------- overburdening a for loop---------------------------
+// this is shoving too much in a for loop, need to think about discrete smallObjects, bigObjects, functions and loops that will streamline, and make naked for loops much more targeted. 
+//----------<<<------------- overburdening a for loop---------------------------
 
 }
 
