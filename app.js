@@ -46,7 +46,7 @@ var askerFunction = function (question) {
 };
 
 
-firstObj = {
+var firstObj = {
   country : 'Canada',
   correctAnswer : 'yes',
   boolCorrect : false,
@@ -102,7 +102,11 @@ firstObj = {
 // possible workaround for now until i have a better sense of objects, constructors and functions working with each other...
 // it's important to consider that I was able to access this.country from the function referenced by userGuess. 
 
-
+//------------------ !!! caught important mistake and faulty assumption -------------------
+// in the previous lines i was writing about how i was able to work with this.country from the firstObj. but no! That was wrong and something I could have caught earlier with a console.log... console logging askerFunction's question (what's passed to it as an argument)
+// is undefined! so it's not working! 
+// Which leads my hunch back to constructors and prototypes.
+// I need to be able to work fluidly and specifically with my key/values, and methods that can access them!
 
 
 // -------------- !!! relevant observation in the haze of codeblindness  --------------------
