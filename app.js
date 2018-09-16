@@ -40,8 +40,8 @@ var askerFunction = function (question) {
   //   userGuess.push(question);
   // var smallObj.asker = question[];
   // console.log(question,'smallObj.asker[i]');
-//   return asker;
-console.log(asker);
+  console.log(question);
+  return asker;
 
 };
 
