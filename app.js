@@ -7,7 +7,10 @@ var correctCounter = [];
 userGuess = [];
 
 var bigObj = {};
-var smallObj = {};
+var smallObj = {
+    asker : [],
+
+};
 
 smallObj.asker = CorrectAnswer[0];
 
@@ -20,17 +23,21 @@ for (var j = 0; i < countries.length; i++) {
 }
 // for loop test passes
 
+
 for (var i = 0; i < countries.length; i++) {
     // console.log(countries[i], 'show');
 // -------------AskerFunction-------------------
   var AskerFunction = function (question) {
-    console.log(question, ' the questions');
+    // console.log(question, ' the questions');
     var asker = prompt(question, 'im prompting');
     userGuess.push(question);
     
-    smallObj.asker = question;
+    // var smallObj.asker = question[];
+    // console.log(question,'smallObj.asker[i]');
+
     return asker;
   }
+
 //-----------------<<<AskerFunction--------------
 
 //     //does smallObj need an [i]?
@@ -53,8 +60,12 @@ for (var i = 0; i < countries.length; i++) {
 // //   bigObj = Object.entries( smallObj.asker);
 
 
-  AskerFunction(countries[i]);
+  AskerFunction(countries[0]);
+
 }
+
+console.log(AskerFunction(countries[0]));
+
 
 
 
