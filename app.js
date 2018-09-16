@@ -1,5 +1,20 @@
 //countries
 var countries = ['Canada', 'Chile', 'France', 'UAE', 'Brazil'];
+
+
+// an example of what the first small object in the bigObject may look like
+firstPossibleSmallObjXxample = {
+countries : countries[0],
+CorrectAnswer : correctCounter[0]
+boolCorrect = false;
+userGuess = prompt('whatever the user puts in for an answer, either yes or no),
+
+//access to a method that can check if userGuess === CorrectAnswer and if it does 
+// set boolCorrect to equal true.
+}
+
+
+
 //answer
 CorrectAnswer = ['y', 'n,', 'y', 'y'];
 boolCorrect = false;
