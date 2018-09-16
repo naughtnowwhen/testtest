@@ -9,8 +9,9 @@ CorrectAnswer : correctCounter[0]
 boolCorrect = false;
 userGuess = prompt('whatever the user puts in for an answer, either yes or no),
 
-//access to a method that can check if userGuess === CorrectAnswer and if it does 
-// set boolCorrect to equal true.
+
+var x = 'access to a method that can check if userGuess === CorrectAnswer and if it doesset boolCorrect to equal true.';
+
 }
 
 
