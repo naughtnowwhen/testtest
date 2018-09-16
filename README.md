@@ -1,1 +1,2 @@
-and this change is reflected?
+looked up in browser...
+AskerFunction(countries[0]), it returned "im prompting" app.js:68

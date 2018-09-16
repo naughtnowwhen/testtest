@@ -12,7 +12,12 @@ var smallObj = {
 
 };
 
-smallObj.asker = CorrectAnswer[0];
+//pseudocode for the concept of setting smallObj.asker equal to the first question in the array of countries
+//
+
+
+
+// smallObj.asker = CorrectAnswer[0];
 
 //for loop explicitly set to one itertion for testing
 
@@ -60,9 +65,10 @@ for (var i = 0; i < countries.length; i++) {
 // //   bigObj = Object.entries( smallObj.asker);
 
 
-  AskerFunction(countries[0]);
+//   AskerFunction(countries[i]);
 
 }
+
 
 console.log(AskerFunction(countries[0]));
 
