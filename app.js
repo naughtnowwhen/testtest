@@ -40,7 +40,9 @@ var askerFunction = function (question) {
   //   userGuess.push(question);
   // var smallObj.asker = question[];
   // console.log(question,'smallObj.asker[i]');
-  return asker;
+//   return asker;
+console.log(asker);
+
 };
 
 
@@ -80,7 +82,26 @@ firstObj = {
 // better yet, something more targeted... Object.values(firstObj.userguess)
 // that's not the execution, but it is the idea.
 
-// ----------------- !!! Oh, i think it's because askerFunction is returning down to a value, in this case a string... so for troubleshooting, comment out the return and just console.log or alert
+// ----------------- !!! Oh, i think it's because askerFunction is returning down to a value, in this case a string... so for troubleshooting, comment out the return and just console.log or alert to see if it shows up.
+
+// I know that askerFunction is a function, after I commented out the return firstObj.userGuess results in undefined. How to get firstObj.userGuess to recognize that it's holding a function?
+
+// as if i need proof, but here's proof, it's a function... asking in Dev Tools
+// typeof askerFunction
+// "function"
+
+
+// ---------------- Not able to recognize from firstObj that userGuess boils down to a function. so time bring askerFunction's return back from commented_Out and try another path.
+// i'm thinking that path is constructor...
+
+// But think of what i learned, functions can be called directly from the key/value pairs in an object, but it seems that managing them is tricky. And that's where i think prototypes come in.
+
+// I want my key/value pairs to be able to talk and share with each other...
+
+
+// possible workaround for now until i have a better sense of objects, constructors and functions working with each other...
+// it's important to consider that I was able to access this.country from the function referenced by userGuess. 
+
 
 
 
