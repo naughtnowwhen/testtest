@@ -1,6 +1,39 @@
 //countries
 var countries = ['Canada', 'Chile', 'France', 'UAE', 'Brazil'];
 
+
+// no, realized i don't want to pass country into responseTruthChecker, 
+// the country is irrelevant here, the relevance is if their response === correctAnswer, if it does, then set boolCorrect from false, to true.
+
+// -----------------considering what to pass in, variables, or this.variables?----------
+// so the function arguments will just be the variable names, since they're placeholders for logic...
+
+//the logic, the guts of the function is where i'll pass this.variables and return with a this.
+
+// ----------<<<----considering what to pass in, variables, or this.variables?----------
+
+
+
+
+var responseTruthChecker = function (userGuess, correctAnswer, boolCorrect) {
+  if (this.correctAnswer.includes(this.userGuess))
+  console.log(userGuess);
+    boolCorrect = true;
+
+// ------------------------array based, possibly suited for troubleshooting ----------------    
+    // maybe the next line could help with troubleshooting, but this is an array based way of dealing with the problem, and i want objects as much as possible. for now comment out.
+//   correctResponse.push(prompted);
+// ------------<<<---------array based, possibly suited for troubleshooting ----------------    
+
+//------------------------ alerting from inside responseTruthChecker ----------------
+// seems clunky since the task of alerting and checking truth are distinct and this may be a good example of function overloading, discrete functions as much as possible, right?
+// will comment in and out for troubleshooting. 
+  alert('you got it!');
+
+//---------------<<<------ alerting from inside responseTruthChecker ----------------
+
+};
+
 var askerFunction = function (question) {
   // console.log(question, ' the questions');
   var asker = prompt(question, 'im prompting');
@@ -85,7 +118,7 @@ for (var i = 0; i < countries.length; i++) {
 //-----------------<<<askerFunction-----------------------------------
 
 // ???-------------does smallObj need an [i]?
-// well, it depends on how to think about the small objects, if each smallObject is single collection of a question, answer, bool, userGuess, etc... then no, it wouldn't need an iterator, but if considering another class of small objects, like a smallObject that just has an array of questions, then might consider an iterator, but the goal is to get away from the iterator and use methods like .includes to replace iteration.    
+// well, it depends on how to think about the small objects, if each smallObject is single collection of a question, answer, bool, userGuess, etc... then no, it wouldn't need an iterator, but if considering another class of small objects, like a smallObject that just has an array of questions, then might consider an iterator, but the goal is to get away from the iterator and use methods like .includes to replace iteration.
 // ???------<<<----does smallObj need an [i]?-------------------------
 
 
@@ -119,36 +152,32 @@ for (var i = 0; i < countries.length; i++) {
 //-------------an array iterator way of thinking of calling askerFunction on countries
 
 //-------------------------- overburdening a for loop---------------------------
-// this is shoving too much in a for loop, need to think about discrete smallObjects, bigObjects, functions and loops that will streamline, and make naked for loops much more targeted. 
+// this is shoving too much in a for loop, need to think about discrete smallObjects, bigObjects, functions and loops that will streamline, and make naked for loops much more targeted.
 //----------<<<------------- overburdening a for loop---------------------------
 
 }
 
 
-//askerFunctionPrompt
-// console.log(askerFunction(countries[0]));
-
-
-
-
-//   askerFunction(countries[i]);
-
+//------------------------first attempt at a truth checker function-------------------------
+// take what's good, refactor the rest
+// copying the idea of the code up to the top, line 4.
 
 
 //     //checking countries , countries if they inclue the user response
-//   var functionPromptedEval = function (prompted, countries, bool) {
+//   var responseTruthChecker = function (prompted, countries, bool) {
 //     if (countries.includes(prompted === a[a]))
 //       bool = true;
 //     correctResponse.push(prompted);
 //     alert('you got it!');
-
 //   };
+//-------------<<<--------first attempt at a truth checker function-------------------------
+
 
 
 
 // }
 // //for
-// // functionPromptedEval(askerFunction(prompted, countries, boolCorrect));
+// // responseTruthChecker(askerFunction(prompted, countries, boolCorrect));
 
 // //
 
