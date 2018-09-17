@@ -2,7 +2,7 @@
 var bigObj = {};
 var countries = ['Canada', 'Chile', 'France', 'UAE', 'Brazil'];
 
-// no, realized i don't want to pass country into responseTruthChecker, 
+// no, realized i don't want to pass country into responseTruthChecker,
 // the country is irrelevant here, the relevance is if their response === correctAnswer, if it does, then set boolCorrect from false, to true.
 
 // -----------------considering what to pass in, variables, or this.variables?----------
@@ -17,17 +17,17 @@ var countries = ['Canada', 'Chile', 'France', 'UAE', 'Brazil'];
 
 var responseTruthChecker = function (userGuess, correctAnswer, boolCorrect) {
   if (this.correctAnswer.includes(this.userGuess))
-  console.log(userGuess);
-    boolCorrect = true;
+    console.log(userGuess);
+  boolCorrect = true;
 
-// ------------------------array based, possibly suited for troubleshooting ----------------    
-    // maybe the next line could help with troubleshooting, but this is an array based way of dealing with the problem, and i want objects as much as possible. for now comment out.
-//   correctResponse.push(prompted);
-// ------------<<<---------array based, possibly suited for troubleshooting ----------------    
+  // ------------------------array based, possibly suited for troubleshooting ----------------
+  // maybe the next line could help with troubleshooting, but this is an array based way of dealing with the problem, and i want objects as much as possible. for now comment out.
+  //   correctResponse.push(prompted);
+  // ------------<<<---------array based, possibly suited for troubleshooting ----------------
 
-//------------------------ alerting from inside responseTruthChecker ----------------
-// seems clunky since the task of alerting and checking truth are distinct and this may be a good example of function overloading, discrete functions as much as possible, right?
-// will comment in and out for troubleshooting. 
+  //------------------------ alerting from inside responseTruthChecker ----------------
+  // seems clunky since the task of alerting and checking truth are distinct and this may be a good example of function overloading, discrete functions as much as possible, right?
+  // will comment in and out for troubleshooting.
   alert('you got it!');
 
 //---------------<<<------ alerting from inside responseTruthChecker ----------------
@@ -41,22 +41,184 @@ var askerFunction = function (question) {
   // var smallObj.asker = question[];
   // console.log(question,'smallObj.asker[i]');
   console.log(question);
-  return asker;
+//   return asker;
 
 };
 
 
+
+//
+
+
+// named it country set because it's a set with relevant info pertaining to a country, the country, the correct answer, the boolCorrect, etc... sort of thinking of it like a flash card.
+
+//want to default to universal conditions, like null, false, the bare bones.
+
+// Oh! just make the functions in CountrySet! instead of prototype
+
+var CountrySet = {
+  country : 'Germany',
+  correctAnswer : null,
+  boolCorrect : false,
+  //commenting out because I'm not sure it works yet, but this is the right idea.
+  //
+
+  // ok, i'm glad i can call functions now, but how to pass arguments to them?
+  userGuess : function () {
+    var asker = prompt(question, 'im prompting');
+    console.log(question);
+    return asker;
+  },
+  attempts : [],
+  correctMessage : null,
+  wrongMessage : null,
+  hints : [],
+
+
+};
+
+// ok so i hit seeming limitations with CountrySet and Object.create
+//will try a different method. a simple object... with methods attached
+// will eventually want to have my objects linked up with their appropriate methods.
+
+var globalCorrectArray = [];
+
+var countryObj = function(country, correctAnswer) {
+  this.country = country;
+  this.correctAnswer = correctAnswer;
+  this.success = false;
+  this.correctArray = [];
+  globalCorrectArray.push(this.correctArray);
+};
+
+countryObj.prototype.log = function(){
+  console.log(this.country);
+};
+
+
+///---------------------------.ELSE IF PROTOTYPE --------------------------------------------
+countryObj.prototype.elseif = function (askAgain){
+
+    // --------------------------- where it breaks ----------------------------------------
+// it breaks here because it's not accessing this.correctAnswer
+// the if statement is able to access this.correctAnswer
+
+// this from Dev Tools spells out the problem
+
+// app.js:154 this is this.correctAnswer in the else if condition no
+// app.js:106 this is this.correctAnswer right inside .elseif :::  undefined
+
+// it goes from no to undefined from the else if to the prototype.elseif
+// so this.correct is different or the .elseif proto doesn't have access, right?
+
+
+
+    console.log('this is this.correctAnswer right inside .elseif ::: ' , this.correctAnswer);
+
+    
+// console.log('this is germanCountry from inside .elseif ', germanCountry, ' passes ::: true ');
+// console.log('this is germanCountry.correctAnswer from inside .elseif ', 
+// germanCountry.correctAnswer, ' passes ::: true');
+
+
+
+
+//   console.log('getting into the else if function?' , 'yes i am');
+//   console.log('the following is what is being passed askAgain ', askAgain);
+  var turns = 4;
+  while(askAgain !== this.correctAnswer){
+
+    turns --;
+
+    if(turns <= 0){
+      alert('sorry, too many tries');
+      return false;
+    }
+    askAgain = prompt('please try again');
+    console.log('this is askAgain right after the turn decrementor ', askAgain);
+    console.log('this is this.correctAnswer right after the decrementor' , this.correctAnswer);
+     
+
+    if (askAgain === this.correctAnswer){
+      console.log('this is askAgain right inside the if statement that checks === again. ', askAgain);
+
+      console.log('does the wrong become right?', 'no it does not!');
+      this.prototype.truthTest(askAgain);
+    }
+  }
+};
+
+countryObj.prototype.truthTest = function(asked) {
+  var asked = prompt('have i been to ', this.country);
+  if (asked === this.correctAnswer){
+    console.log('this is this.correctAnswer if it equesls asked ::: ', this.correctAnswer, 'passes ::: true');
+    this.success = true;
+    this.correctArray.push(true);
+    alert(this.success);
+    return true;
+  }
+
+  else if(asked !== this.correctAnswer){
+    console.log('getting here?', 'yes i am');
+    console.log('this is asked in the else if condition ::: ', asked);
+    console.log('this is this.correctAnswer in the else if condition', this.correctAnswer);
+
+    countryObj.prototype.elseif(asked);
+
+  }
+};
+
+var germanCountry = new countryObj('germany', 'no');
+
+// germanObj.prototype.askUser = function(this.country){
+// var asked = alert('did you go to', this.country);
+// };
+
+
+
+//
+// CountrySet.prototype.askerFunction = function(question){
+//   // console.log(question, ' the questions');
+//   var asker = prompt(question, 'im prompting');
+//   //   userGuess.push(question);
+//   // var smallObj.asker = question[];
+//   // console.log(question,'smallObj.asker[i]');
+//   console.log(question);
+//   //   return asker;
+// };
+
+
+var country1 = Object.create(CountrySet);
+country1.country = 'Canada';
+country1.correctAnswer = 'yes';
+country1.boolCorrect = false;
+
+// askerFunction();
+
+var askerFunction = function (question) {
+  var asker = prompt(question, 'im prompting');
+  console.log(question);
+  //   return asker;
+};
+
+
+
+// hard coded basic object
 var firstObj = {
   country : 'Canada',
   correctAnswer : 'yes',
   boolCorrect : false,
-  userGuess : askerFunction(this.country),
+  userGuess : function (question) {
+    var asker = prompt(question, 'im prompting');
+    console.log(question);
+    //   return asker;
+  },
   attempts : [],
   correctMessage : 'yep, ive been to Canada',
   wrongMessage : 'sorry, guess again',
   hints : ['maple syrup', 'hockey','moose'],
 
-// --------------------------- wondering about this. access --------------------------- 
+// --------------------------- wondering about this. access ---------------------------
 
 //                   ------- reason for wanting this.access -----
 // the following is a key called 'checker' only for troubleshooting purposes,
@@ -100,11 +262,11 @@ var firstObj = {
 
 
 // possible workaround for now until i have a better sense of objects, constructors and functions working with each other...
-// it's important to consider that I was able to access this.country from the function referenced by userGuess. 
+// it's important to consider that I was able to access this.country from the function referenced by userGuess.
 
 //------------------ !!! caught important mistake and faulty assumption -------------------
 // in the previous lines i was writing about how i was able to work with this.country from the firstObj. but no! That was wrong and something I could have caught earlier with a console.log... console logging askerFunction's question (what's passed to it as an argument)
-// is undefined! so it's not working! 
+// is undefined! so it's not working!
 // Which leads my hunch back to constructors and prototypes.
 // I need to be able to work fluidly and specifically with my key/values, and methods that can access them!
 
@@ -119,16 +281,16 @@ var firstObj = {
 //   checker : this.country
 //  all result in errors, how to access neighbor values from inside the object
 //  I think this is an example of needing a constructor, for all this information to inherit
-//  this. accesibility. 
+//  this. accesibility.
 // hmm, so checker : country results in error, country is undefined
-// checker : this.country results in undefined. 
-  
-
-// ------------<<<------------ wondering about this. access --------------------------- 
+// checker : this.country results in undefined.
 
 
+// ------------<<<------------ wondering about this. access ---------------------------
 
-// --------------------------- experimenting with this. access --------------------------- 
+
+
+// --------------------------- experimenting with this. access ---------------------------
 
 // And how to check? Copy paste this firstObj and refactor it into a constructor? So that i can check for this. access?
 
@@ -140,7 +302,7 @@ var firstObj = {
 // which results in not a constructor error, which leads me to believe that yes, i need a constructor.
 
 
-// -----------------<<<------- experimenting with this. access --------------------------- 
+// -----------------<<<------- experimenting with this. access ---------------------------
 
 
 
