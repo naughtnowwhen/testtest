@@ -1,6 +1,6 @@
 //countries
+var bigObj = {};
 var countries = ['Canada', 'Chile', 'France', 'UAE', 'Brazil'];
-
 
 // no, realized i don't want to pass country into responseTruthChecker, 
 // the country is irrelevant here, the relevance is if their response === correctAnswer, if it does, then set boolCorrect from false, to true.
@@ -147,6 +147,13 @@ var firstObj = {
 
 };
 
+bigObj[0]= firstObj;
+
+//in qoutes now because they don't exist yet.
+bigObj[1]= 'secondObj';
+bigObj[2]= 'thirdObj';
+bigObj[3]= 'fourthObj';
+
 
 
 
@@ -176,7 +183,6 @@ boolCorrect = false;
 var correctCounter = [];
 userGuess = [];
 
-var bigObj = {};
 var smallObj = {
   asker : [],
 };

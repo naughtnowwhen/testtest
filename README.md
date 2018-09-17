@@ -1,3 +1,7 @@
+!!! wow Jackie's javascript connect came up with something really cool!
+/Users/petermurphy/Desktop/Slack\:code\ holder/image_from_ios.jpg
+in the terminal it can be found in nights201/imgCatchall
+
 
 looked up in browser...
 AskerFunction(countries[0]), it returned "im prompting" app.js:68
