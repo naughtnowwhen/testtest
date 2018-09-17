@@ -31,3 +31,6 @@ CorrectAnswer : correctAnswer;
 
 // correctCounter: could be a function that accumulates each time a bool is set true, or an array that gets pushed into when true,
 }
+
+
+now that it's working, i should start a new clean branch that just takes what is working, it should also probably be a new or different repo
