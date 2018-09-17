@@ -1,3 +1,7 @@
+'use strict';
+
+var globalCorrectArray = [];
+
 var CountryObj = function(country, correctAnswer) {
   // ----borrowed code (!new.target) throw ... -----
   if(!new.target) throw 'CountryObj must be called with new';

@@ -58,6 +58,8 @@ var askerFunction = function (question) {
 
 // Oh! just make the functions in CountrySet! instead of prototype
 
+
+
 var CountrySet = {
   country : null,
   correctAnswer : null,
@@ -85,26 +87,36 @@ var CountrySet = {
 
 var globalCorrectArray = [];
 
-var CountryObj = function(country, correctAnswer) {
+//---------------------- Country Constructor -----------------------------------
+
+var CountryObj = function(country, correctAnswer, hint) {
   // ----borrowed code (!new.target) throw ... -----
   if(!new.target) throw 'CountryObj must be called with new';
   this.country = country;
   this.correctAnswer = correctAnswer;
   this.success = false;
+  this.hint = hint;
   this.correctArray = [];
   globalCorrectArray.push(this.correctArray);
 };
 
 CountryObj.prototype.log = function(){
-  console.log(this.country);
-  
+//   console.log(this.country); 
 };
 
 
-
+// consider renaming it, as not .elseif
 ///---------------------------.ELSE IF PROTOTYPE --------------------------------------------
 CountryObj.prototype.elseif = function (askAgain){
-    console.dir(CountryObj.prototype);
+var doYouWantHint = prompt('do you want a hint? answer with yes or no, please ');
+
+if(doYouWantHint === 'yes'){
+    alert(this.hint);
+}
+
+else 
+
+// console.dir(CountryObj.prototype);
 
   // --------------------------- where it breaks ----------------------------------------
 // it breaks here because it's not accessing this.correctAnswer
@@ -141,22 +153,35 @@ CountryObj.prototype.elseif = function (askAgain){
       alert('sorry, too many tries');
       return false;
     }
-    askAgain = prompt('please try again');
+    askAgain = prompt('please try again, have i been to ', this.country);
     console.log('this is askAgain right after the turn decrementor ', askAgain);
     console.log('this is this.correctAnswer right after the decrementor' , this.correctAnswer);
 
 
     if (askAgain === this.correctAnswer){
       console.log('this is askAgain right inside the if statement that checks === again. ', askAgain);
-
+        console.log(askAgain === this.correctAnswer,'askAgain === this.correctAnswer');
       console.log('does the wrong become right?', 'no it does not!');
-      this.prototype.truthTest(askAgain);
+      this.truthTest(askAgain);
+    //   this.prototype.truthTest(askAgain);
+    // only say prototype in the declaration not the call
+
+
     }
   }
 };
 
 CountryObj.prototype.truthTest = function(asked) {
-  var asked = prompt('have i been to ', this.country);
+  if (asked === this.correctAnswer){
+    this.success = true;
+    this.correctArray.push(true);
+    alert(this.success);
+    return true;
+  }
+  
+    var asked = prompt('have i been to ', this.country);
+  console.log(asked, 'asked');
+
   if (asked === this.correctAnswer){
     console.log('this is this.correctAnswer if it equesls asked ::: ', this.correctAnswer, 'passes ::: true');
     this.success = true;
@@ -165,17 +190,19 @@ CountryObj.prototype.truthTest = function(asked) {
     return true;
   }
 
+  // don't refer to these methods as protos they are attached to the proto
   else if(asked !== this.correctAnswer){
     console.log('getting here?', 'yes i am');
     console.log('this is asked in the else if condition ::: ', asked);
     console.log('this is this.correctAnswer in the else if condition', this.correctAnswer, ' passes ::: true');
 
-    CountryObj.prototype.elseif(asked);
+    this.elseif(asked);
 
   }
 };
 
-var germanCountry = new CountryObj('germany', 'no');
+var germanCountry = new CountryObj('germany', 'no', 'ive only been to one European country');
+var canadaCountry = new CountryObj('canada', 'yes','Im from Americas Canada, so...');
 
 // germanObj.prototype.askUser = function(this.country){
 // var asked = alert('did you go to', this.country);
