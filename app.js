@@ -196,13 +196,16 @@ CountryObj.prototype.truthTest = function(asked) {
     console.log('this is asked in the else if condition ::: ', asked);
     console.log('this is this.correctAnswer in the else if condition', this.correctAnswer, ' passes ::: true');
 
-    this.elseif(asked);
+    this.elseif();
 
   }
 };
 
 var germanCountry = new CountryObj('germany', 'no', 'ive only been to one European country');
 var canadaCountry = new CountryObj('canada', 'yes','Im from Americas Canada, so...');
+var brazilCountry = new CountryObj('brazil', 'yes', 'Rio has tons of beauty and squalor');
+var franceCountry = new CountryObj('france', 'yes', 'their southern coast sure is amazing');
+var unitedArabEmirates = new CountryObj('United Arab Emirates', 'yes', 'who learns to snowboard in the desert?! An absurd idea!');
 
 // germanObj.prototype.askUser = function(this.country){
 // var asked = alert('did you go to', this.country);
