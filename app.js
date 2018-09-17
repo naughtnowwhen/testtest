@@ -1,3 +1,5 @@
+'use strict';
+
 //countries
 var bigObj = {};
 var countries = ['Canada', 'Chile', 'France', 'UAE', 'Brazil'];
@@ -57,7 +59,7 @@ var askerFunction = function (question) {
 // Oh! just make the functions in CountrySet! instead of prototype
 
 var CountrySet = {
-  country : 'Germany',
+  country : null,
   correctAnswer : null,
   boolCorrect : false,
   //commenting out because I'm not sure it works yet, but this is the right idea.
@@ -83,7 +85,9 @@ var CountrySet = {
 
 var globalCorrectArray = [];
 
-var countryObj = function(country, correctAnswer) {
+var CountryObj = function(country, correctAnswer) {
+  // ----borrowed code (!new.target) throw ... -----
+  if(!new.target) throw 'CountryObj must be called with new';
   this.country = country;
   this.correctAnswer = correctAnswer;
   this.success = false;
@@ -91,15 +95,18 @@ var countryObj = function(country, correctAnswer) {
   globalCorrectArray.push(this.correctArray);
 };
 
-countryObj.prototype.log = function(){
+CountryObj.prototype.log = function(){
   console.log(this.country);
+  
 };
 
 
-///---------------------------.ELSE IF PROTOTYPE --------------------------------------------
-countryObj.prototype.elseif = function (askAgain){
 
-    // --------------------------- where it breaks ----------------------------------------
+///---------------------------.ELSE IF PROTOTYPE --------------------------------------------
+CountryObj.prototype.elseif = function (askAgain){
+    console.dir(CountryObj.prototype);
+
+  // --------------------------- where it breaks ----------------------------------------
 // it breaks here because it's not accessing this.correctAnswer
 // the if statement is able to access this.correctAnswer
 
@@ -113,18 +120,18 @@ countryObj.prototype.elseif = function (askAgain){
 
 
 
-    console.log('this is this.correctAnswer right inside .elseif ::: ' , this.correctAnswer);
-
-    
-// console.log('this is germanCountry from inside .elseif ', germanCountry, ' passes ::: true ');
-// console.log('this is germanCountry.correctAnswer from inside .elseif ', 
-// germanCountry.correctAnswer, ' passes ::: true');
+  console.log('this is this.correctAnswer right inside .elseif ::: ' , this.correctAnswer);
 
 
+  // console.log('this is germanCountry from inside .elseif ', germanCountry, ' passes ::: true ');
+  // console.log('this is germanCountry.correctAnswer from inside .elseif ',
+  // germanCountry.correctAnswer, ' passes ::: true');
 
 
-//   console.log('getting into the else if function?' , 'yes i am');
-//   console.log('the following is what is being passed askAgain ', askAgain);
+
+
+  //   console.log('getting into the else if function?' , 'yes i am');
+  //   console.log('the following is what is being passed askAgain ', askAgain);
   var turns = 4;
   while(askAgain !== this.correctAnswer){
 
@@ -137,7 +144,7 @@ countryObj.prototype.elseif = function (askAgain){
     askAgain = prompt('please try again');
     console.log('this is askAgain right after the turn decrementor ', askAgain);
     console.log('this is this.correctAnswer right after the decrementor' , this.correctAnswer);
-     
+
 
     if (askAgain === this.correctAnswer){
       console.log('this is askAgain right inside the if statement that checks === again. ', askAgain);
@@ -148,7 +155,7 @@ countryObj.prototype.elseif = function (askAgain){
   }
 };
 
-countryObj.prototype.truthTest = function(asked) {
+CountryObj.prototype.truthTest = function(asked) {
   var asked = prompt('have i been to ', this.country);
   if (asked === this.correctAnswer){
     console.log('this is this.correctAnswer if it equesls asked ::: ', this.correctAnswer, 'passes ::: true');
@@ -161,14 +168,14 @@ countryObj.prototype.truthTest = function(asked) {
   else if(asked !== this.correctAnswer){
     console.log('getting here?', 'yes i am');
     console.log('this is asked in the else if condition ::: ', asked);
-    console.log('this is this.correctAnswer in the else if condition', this.correctAnswer);
+    console.log('this is this.correctAnswer in the else if condition', this.correctAnswer, ' passes ::: true');
 
-    countryObj.prototype.elseif(asked);
+    CountryObj.prototype.elseif(asked);
 
   }
 };
 
-var germanCountry = new countryObj('germany', 'no');
+var germanCountry = new CountryObj('germany', 'no');
 
 // germanObj.prototype.askUser = function(this.country){
 // var asked = alert('did you go to', this.country);
@@ -340,10 +347,10 @@ bigObj[3]= 'fourthObj';
 
 
 // these global vars ought to be migrated into each small object.
-CorrectAnswer = ['y', 'n,', 'y', 'y'];
-boolCorrect = false;
+var CorrectAnswer = ['y', 'n,', 'y', 'y'];
+var boolCorrect = false;
 var correctCounter = [];
-userGuess = [];
+var userGuess = [];
 
 var smallObj = {
   asker : [],
