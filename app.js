@@ -18,38 +18,38 @@ var CountryObj = function(country, correctAnswer, hint) {
 };
 
 CountryObj.prototype.log = function(){
-//   console.log(this.country); 
+//   console.log(this.country);
 };
 
 
 // consider renaming it, as not .elseif
 ///---------------------------.ELSE IF PROTOTYPE --------------------------------------------
 CountryObj.prototype.elseif = function (askAgain){
-var doYouWantHint = prompt('do you want a hint? answer with yes or no, please ');
+  var doYouWantHint = prompt('do you want a hint? answer with yes or no, please ');
 
-if(doYouWantHint === 'yes'){
+  if(doYouWantHint === 'yes'){
     alert(this.hint);
-}
+  }
 
-else 
+  else
 
-// console.dir(CountryObj.prototype);
+  // console.dir(CountryObj.prototype);
 
   // --------------------------- where it breaks ----------------------------------------
-// it breaks here because it's not accessing this.correctAnswer
-// the if statement is able to access this.correctAnswer
+  // it breaks here because it's not accessing this.correctAnswer
+  // the if statement is able to access this.correctAnswer
 
-// this from Dev Tools spells out the problem
+  // this from Dev Tools spells out the problem
 
-// app.js:154 this is this.correctAnswer in the else if condition no
-// app.js:106 this is this.correctAnswer right inside .elseif :::  undefined
+  // app.js:154 this is this.correctAnswer in the else if condition no
+  // app.js:106 this is this.correctAnswer right inside .elseif :::  undefined
 
-// it goes from no to undefined from the else if to the prototype.elseif
-// so this.correct is different or the .elseif proto doesn't have access, right?
+  // it goes from no to undefined from the else if to the prototype.elseif
+  // so this.correct is different or the .elseif proto doesn't have access, right?
 
 
 
-  console.log('this is this.correctAnswer right inside .elseif ::: ' , this.correctAnswer);
+    console.log('this is this.correctAnswer right inside .elseif ::: ' , this.correctAnswer);
 
 
   // console.log('this is germanCountry from inside .elseif ', germanCountry, ' passes ::: true ');
@@ -77,7 +77,7 @@ else
 
     if (askAgain === this.correctAnswer){
       console.log('this is askAgain right inside the if statement that checks === again. ', askAgain);
-        console.log(askAgain === this.correctAnswer,'askAgain === this.correctAnswer');
+      console.log(askAgain === this.correctAnswer,'askAgain === this.correctAnswer');
       console.log('does the wrong become right?', 'no it does not!');
       this.truthTest(askAgain);
     //   this.prototype.truthTest(askAgain);
@@ -95,8 +95,8 @@ CountryObj.prototype.truthTest = function(asked) {
     alert(this.success);
     return true;
   }
-  
-    var asked = prompt('have i been to ', this.country);
+
+  var asked = prompt('have i been to ', this.country);
   console.log(asked, 'asked');
 
   if (asked === this.correctAnswer){
@@ -124,20 +124,20 @@ var brazilCountry = new CountryObj('brazil', 'yes', 'Rio has tons of beauty and 
 var franceCountry = new CountryObj('france', 'yes', 'their southern coast sure is amazing');
 var unitedArabEmirates = new CountryObj('United Arab Emirates', 'yes', 'who learns to snowboard in the desert?! An absurd idea!');
 
-// germanObj.prototype.askUser = function(this.country){
-// var asked = alert('did you go to', this.country);
-// };
+// all countries array
+var allcountries = [germanCountry, canadaCountry, brazilCountry, franceCountry, unitedArabEmirates];
 
+//calls truth test on each one.
+for (var i = 0; i < allcountries.length; i ++){
+  allcountries[i].truthTest();
+}
 
+let correctOnes = [];
 
-//
-// CountrySet.prototype.askerFunction = function(question){
-//   // console.log(question, ' the questions');
-//   var asker = prompt(question, 'im prompting');
-//   //   userGuess.push(question);
-//   // var smallObj.asker = question[];
-//   // console.log(question,'smallObj.asker[i]');
-//   console.log(question);
-//   //   return asker;
-// };
+for (var i = 0; i < allcountries.length; i ++){
+  if(allcountries[i].success === true){
+    correctOnes.push(true, allcountries[i].country);
+  }
+}
+
 
