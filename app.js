@@ -17,38 +17,38 @@ var CountryObj = function(country, correctAnswer, hint) {
 };
 
 CountryObj.prototype.log = function(){
-//   console.log(this.country); 
+//   console.log(this.country);
 };
 
 
 // consider renaming it, as not .elseif
 ///---------------------------.ELSE IF PROTOTYPE --------------------------------------------
 CountryObj.prototype.elseif = function (askAgain){
-var doYouWantHint = prompt('do you want a hint? answer with yes or no, please ');
+  var doYouWantHint = prompt('do you want a hint? answer with yes or no, please ');
 
-if(doYouWantHint === 'yes'){
+  if(doYouWantHint === 'yes'){
     alert(this.hint);
-}
+  }
 
-else 
+  else
 
-// console.dir(CountryObj.prototype);
+  // console.dir(CountryObj.prototype);
 
   // --------------------------- where it breaks ----------------------------------------
-// it breaks here because it's not accessing this.correctAnswer
-// the if statement is able to access this.correctAnswer
+  // it breaks here because it's not accessing this.correctAnswer
+  // the if statement is able to access this.correctAnswer
 
-// this from Dev Tools spells out the problem
+  // this from Dev Tools spells out the problem
 
-// app.js:154 this is this.correctAnswer in the else if condition no
-// app.js:106 this is this.correctAnswer right inside .elseif :::  undefined
+  // app.js:154 this is this.correctAnswer in the else if condition no
+  // app.js:106 this is this.correctAnswer right inside .elseif :::  undefined
 
-// it goes from no to undefined from the else if to the prototype.elseif
-// so this.correct is different or the .elseif proto doesn't have access, right?
+  // it goes from no to undefined from the else if to the prototype.elseif
+  // so this.correct is different or the .elseif proto doesn't have access, right?
 
 
 
-  console.log('this is this.correctAnswer right inside .elseif ::: ' , this.correctAnswer);
+    console.log('this is this.correctAnswer right inside .elseif ::: ' , this.correctAnswer);
 
 
   // console.log('this is germanCountry from inside .elseif ', germanCountry, ' passes ::: true ');
@@ -76,7 +76,7 @@ else
 
     if (askAgain === this.correctAnswer){
       console.log('this is askAgain right inside the if statement that checks === again. ', askAgain);
-        console.log(askAgain === this.correctAnswer,'askAgain === this.correctAnswer');
+      console.log(askAgain === this.correctAnswer,'askAgain === this.correctAnswer');
       console.log('does the wrong become right?', 'no it does not!');
       this.truthTest(askAgain);
     //   this.prototype.truthTest(askAgain);
@@ -94,8 +94,8 @@ CountryObj.prototype.truthTest = function(asked) {
     alert(this.success);
     return true;
   }
-  
-    var asked = prompt('have i been to ', this.country);
+
+  var asked = prompt('have i been to ', this.country);
   console.log(asked, 'asked');
 
   if (asked === this.correctAnswer){
@@ -123,6 +123,65 @@ var brazilCountry = new CountryObj('brazil', 'yes', 'Rio has tons of beauty and 
 var franceCountry = new CountryObj('france', 'yes', 'their southern coast sure is amazing');
 var unitedArabEmirates = new CountryObj('United Arab Emirates', 'yes', 'who learns to snowboard in the desert?! An absurd idea!');
 
+var allCountries = [germanCountry,canadaCountry,brazilCountry,franceCountry,unitedArabEmirates];
+
+var grabber = document.getElementById('grab');
+for(var i = 0; i < allCountries.length; i++){
+  grabber.value = allCountries[i].country;
+  console.log(grabber.value, 'grabber.value');
+
+}
+
+var displayMe = document.getElementById('displayMe');
+// displayMe.innerHTML = allCountries[0].country;
+
+var userInput;
+var changer;
+
+var i = 0; i < allCountries.length;
+
+var countryPlusser= function(){
+  displayMe.innerHTML = 'have you been to this country :' + ' ' +  allCountries[i].country;
+  i++;
+  if(i === allCountries.length){
+    alert('all the countries');
+  }
+
+};
+
+var clickFunction = function () {
+  userInput = document.getElementById('submitField');
+  console.log(userInput.value);
+  changer = document.getElementById('changer');
+  changer.innerHTML = userInput.value;
+  
+
+  countryPlusser();
+
+// let x = document.getElementById('changer');
+// x.textContent = 'after click';
+};
+
+
+//would be curious if something like that could work
+// if(incrementor++){
+//   console.log('it went up');
+// }
+
+
+
+//results in infinite loop
+// for(var i = 0; i < allCountries.length;){
+// if(clickFunction()){
+// i++
+// console.log(i);
+// }
+// }
+
+
+// grabber.innerHTML += [i].country;}
+
+
 // germanObj.prototype.askUser = function(this.country){
 // var asked = alert('did you go to', this.country);
 // };
@@ -140,3 +199,18 @@ var unitedArabEmirates = new CountryObj('United Arab Emirates', 'yes', 'who lear
 //   //   return asker;
 // };
 
+// console.log(allCountries[i])
+
+
+
+var randomPicker = function(){
+  var random = (Math.floor(Math.random()*10));
+  return random;
+
+{
+
+
+}
+
+
+};
