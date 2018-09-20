@@ -39,27 +39,50 @@ var guesser = function () {
 let returnedState;
 let modifiedStatesBeen = statesBeen;
 let indexOfCorrectGuess;
+let correctGuessAmount = [];
+let correctStateGuess = [];
 
-
+var tries = 5;
 var stateGuesser = function(){
+  if (tries <= 0){
+    alert ('no guesses left');
+    return false;
+  }
   let hasFound = false;
   let guess = guesser();
 
 
-  for(var i = 0; i < statesBeen.length; i ++){
+
+  for(var i = 0; i < modifiedStatesBeen.length; i ++){
 
 
-    if(guess === statesBeen[i].name){
+    if(guess === modifiedStatesBeen[i].name){
+      tries--;
+      if (tries <= 0){
+        alert ('no guesses left');
+        return false;
+      }
       alert('yep');
       hasFound = true;
+      correctGuessAmount.push(hasFound);
       indexOfCorrectGuess = [i];
-      returnedState = statesBeen[i];
+      returnedState = modifiedStatesBeen[i];
+      correctStateGuess.push(returnedState);
       modifiedStatesBeen.splice(indexOfCorrectGuess, 1);
+      
     }
-  // else if (hasFound === false) {
-  //   alert('sorry, wrong guess');
-  // }
-    //   }
+    
+
+  }
+
+  if(hasFound === false){
+    tries --;
+    if (tries <= 0){
+      alert ('no guesses left');
+      return false;
+    }
+    alert('sorry');
+    stateGuesser();
   }
 };
 
