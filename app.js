@@ -1,6 +1,6 @@
-'use strict;'
+'use strict';
 
-quiz = function(){
+var quiz = function(){
   var right = false;
   var dec = 5;
 
@@ -8,13 +8,13 @@ quiz = function(){
   var num;
   var guess;
 
-  userGuess = function(){
+  var userGuess = function(){
     userName = parseInt(prompt('what is your guess?'));
     return userName;
   };
 
 
-  numPicker = function(){
+  var numPicker = function(){
     num = (Math.floor(Math.random() * 10));
     return num;
   };
@@ -64,4 +64,8 @@ quiz = function(){
   iffer();
 };
 quiz();
+
+
+// quiz().iffer()
+
 
