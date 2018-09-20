@@ -8,7 +8,7 @@
 
 //setting a var called something like hasFound, set it = false, and if the if statement finds a match turn it to true, and take note of the correct match index...
 
-// put the names in a temporary state name array and use the includes method on it, can't use the includes method with my 'if for loop' because it's having to check for obj.name at each index, the names are nested to where 'includes method' can't reach them I don't think. so a temp array will help. 
+// put the names in a temporary state name array and use the includes method on it, can't use the includes method with my 'if for loop' because it's having to check for obj.name at each index, the names are nested to where 'includes method' can't reach them I don't think. so a temp array will help.
 
 // only have an if statement, ignore the else if, else conditions, and safely assume if their guess does not pass the if statement, it's not there...
 
@@ -36,17 +36,30 @@ var guesser = function () {
 };
 
 
+let returnedState;
+let modifiedStatesBeen = statesBeen;
+let indexOfCorrectGuess;
+
+
 var stateGuesser = function(){
+  let hasFound = false;
   let guess = guesser();
 
 
   for(var i = 0; i < statesBeen.length; i ++){
+
+
     if(guess === statesBeen[i].name){
       alert('yep');
+      hasFound = true;
+      indexOfCorrectGuess = [i];
+      returnedState = statesBeen[i];
+      modifiedStatesBeen.splice(indexOfCorrectGuess, 1);
     }
-    // else {
-    //   alert('nope');
-    // }
+  // else if (hasFound === false) {
+  //   alert('sorry, wrong guess');
+  // }
+    //   }
   }
 };
 
