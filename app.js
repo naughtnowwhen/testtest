@@ -42,7 +42,12 @@ let indexOfCorrectGuess;
 let correctGuessAmount = [];
 let correctStateGuess = [];
 
-var tries = 5;
+var tries = 6;
+
+
+
+
+// ---------------------------- stateGuesser()---------------------------------------
 var stateGuesser = function(){
   if (tries <= 0){
     alert ('no guesses left');
@@ -51,30 +56,23 @@ var stateGuesser = function(){
   let hasFound = false;
   let guess = guesser();
 
-
-
   for(var i = 0; i < modifiedStatesBeen.length; i ++){
-
-
     if(guess === modifiedStatesBeen[i].name){
       tries--;
       if (tries <= 0){
         alert ('no guesses left');
         return false;
       }
-      alert('yep');
+      alert('good guess');
+      alert(modifiedStatesBeen[i].message);
       hasFound = true;
-      correctGuessAmount.push(hasFound);
       indexOfCorrectGuess = [i];
       returnedState = modifiedStatesBeen[i];
       correctStateGuess.push(returnedState);
+      correctGuessAmount++;
       modifiedStatesBeen.splice(indexOfCorrectGuess, 1);
-      
     }
-    
-
   }
-
   if(hasFound === false){
     tries --;
     if (tries <= 0){
@@ -85,6 +83,13 @@ var stateGuesser = function(){
     stateGuesser();
   }
 };
+// --------------<<<------------ stateGuesser()---------------------------------------
+
+// while(tries > 0){
+// stateGuesser();    
+// }
+
+
 
 
 //that's right! the trouble with iterating over a whole array of stuff and asking target !== possibilites, there's going to be a lot of mess, because target is bound to not be at many indexes, which will return unwanted.
