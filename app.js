@@ -1,96 +1,173 @@
-// 'use strict';
 
-//realized that negative condition for the else condition in my stateguess is going to run into trouble because there are many instances when [i] !== guess which will result in the else condition, even when true at another index. the iterating 'if' is overly focused, only at that one index and is blind to the other indexes...
+// var sumArr = [];
 
-// This appears to be a myopic problem. only aware of what's right in front of it at the moment, ignoring important context around it...
+// ------------------------ sum() ------------------------------------
+//passes test
+var sum = function(numA, numB){
+  let sumArr = [];
+  let stringSum;
 
-//some solutions that come to mind...
-
-//setting a var called something like hasFound, set it = false, and if the if statement finds a match turn it to true, and take note of the correct match index...
-
-// put the names in a temporary state name array and use the includes method on it, can't use the includes method with my 'if for loop' because it's having to check for obj.name at each index, the names are nested to where 'includes method' can't reach them I don't think. so a temp array will help.
-
-// only have an if statement, ignore the else if, else conditions, and safely assume if their guess does not pass the if statement, it's not there...
-
-
-
-var State = function (name, message) {
-  this.name = name;
-  this.message = message;
-  this.success = false;
+  let numSum = numA + numB;
+  sumArr.push(numSum);
+  stringSum = `The sum of 4 and 7 is ${numSum}.`;
+  sumArr.push(stringSum);
+  //   console.log(sumArr);
+  return sumArr;
 };
-
-var wa = new State('wa','live now');
-var ca = new State('ca','sunny part');
-var nv = new State('nv', 'so hot and trashy');
-var or = new State('or', 'love it there');
-var fl = new State('fl', 'too hot and flat for me');
-
-var statesBeen= [wa, ca, nv, or, fl];
-// console.log(statesBeen, 'statesbeen', 'that works');
+// -----------------<<<------ sum() ------------------------------------
 
 
-var guesser = function () {
-  let guessStore = prompt('take a guess');
-  return guessStore;
+
+// testSum(4, 7);
+
+// ------------------------multiply()------------------------------------
+//passes test
+var multiply = function(numA, numB){
+  let multArr = [];
+  let stringMult;
+
+  let numMult = numA * numB;
+  multArr.push(numMult);
+  stringMult = `The product of 5 and 9 is ${numMult}.`;
+  multArr.push(stringMult);
+  //   console.log(sumArr);
+  return multArr;
 };
+// ----------------<<<-----multiply()------------------------------------
 
 
-let returnedState;
-let modifiedStatesBeen = statesBeen;
-let indexOfCorrectGuess;
-let correctGuessAmount = [];
-let correctStateGuess = [];
+// testMultiply(5,9);
 
-var tries = 6;
+var sumOfFirst2;
+var sumOfThird;
+var sumOfAll;
+var myArr;
+var multOfFirst2;
+var multOfThird;
+var multOfAll;
+var stringSum;
+var stringMult;
+
+// ------------------------sumAndMultiply()------------------------------------
 
 
+// sumAndMultiply = function(numA,numB,numC) {
+// myArr = [];
+// sumOfFirst2 = sum(numA,numB)[0];
+// sumOfThird = sum(numC,0)[0];
+// sumOfAll = sum(sumOfFirst2,sumOfThird)[0];
+// myArr.push(sumOfAll);
 
+// multOfFirst2 = multiply(numA,numB)[0];
+// multOfThird = multiply(numC,1)[0];
+// multOfAll = multiply(multOfFirst2,multOfThird)[0];
+// myArr.push(multOfAll);
 
-// ---------------------------- stateGuesser()---------------------------------------
-var stateGuesser = function(){
-  if (tries <= 0){
-    alert ('no guesses left');
-    return false;
-  }
-  let hasFound = false;
-  let guess = guesser();
+// stringSum = `${numA} and ${numB} and ${numC} sum to ${sumOfAll}.`;
+// myArr.push(stringSum);
 
-  for(var i = 0; i < modifiedStatesBeen.length; i ++){
-    if(guess === modifiedStatesBeen[i].name){
-      tries--;
-      if (tries <= 0){
-        alert ('no guesses left');
-        return false;
-      }
-      alert('good guess');
-      alert(modifiedStatesBeen[i].message);
-      hasFound = true;
-      indexOfCorrectGuess = [i];
-      returnedState = modifiedStatesBeen[i];
-      correctStateGuess.push(returnedState);
-      correctGuessAmount++;
-      modifiedStatesBeen.splice(indexOfCorrectGuess, 1);
-    }
-  }
-  if(hasFound === false){
-    tries --;
-    if (tries <= 0){
-      alert ('no guesses left');
-      return false;
-    }
-    alert('sorry');
-    stateGuesser();
-  }
-};
-// --------------<<<------------ stateGuesser()---------------------------------------
+// stringMult = `The product of ${numA} and ${numB} and ${numC} is ${multOfAll}.`;
+// myArr.push(stringMult);
 
-// while(tries > 0){
-// stateGuesser();    
+// return myArr;
+
+// };
+// sumAndMultiply(4,7,5);
+// console.log(sumOfThird);
+
+// testSumAndMultiply();
+// ----------------<<<-----sumAndMultiply()------------------------------------
+// var testArray = [2, 3, 4]; //eslint-disable-line
+// function sumArray(sumArr) { //eslint-disable-line
+//   var sumNum = 0;
+//   for (var i = 0; i < sumArr.length; i++){
+
+//     sum(sumArr[i], sumNum )[0];
+//     console.log(sumNum);
+//   }
+//   return (sumNum);
 // }
+// var x  = sumArray(testArray);
+
+var testArray = [2, 3, 4];
+var accumulator = 0;
+
+var sumArray = function (myArr){
+  for (var i = 0; i < myArr.length; i ++){
+    accumulator = sum(accumulator,myArr[i])[0];
+    console.log(accumulator);
+  }
+  return accumulator;
+};
+
+// sumArray(testArray);
 
 
 
 
-//that's right! the trouble with iterating over a whole array of stuff and asking target !== possibilites, there's going to be a lot of mess, because target is bound to not be at many indexes, which will return unwanted.
 
+//working
+// var sumArray = function (myArr){
+//     let counter = 0;
+
+//     console.log(myArr, myArr.length, 'myArr');
+
+//     //   for (var i = 0; i <myArr.length; i++){
+//     var firstTwo = sum(myArr[0],myArr[1])[0];
+//     console.log(firstTwo, 'first two');
+//     var secondTwo = sum(myArr[2],0)[0];
+//     var allTogetherNow = sum(firstTwo,secondTwo)[0];
+//     console.log(allTogetherNow, 'alltogethernow');
+//     //   }
+//     countedSum.push(counter);
+
+//   };
+
+// var testArray = [2, 3, 4];
+// var accumulator = 0;
+
+// var sumArray = function (myArr){
+//   for (var i = 0; i < myArr.length; i ++){
+//     accumulator = sum(accumulator,myArr[i])[0];
+//     console.log(accumulator);
+//   }
+//   return accumulator;
+// };
+
+var inputArray = [2,3,4];
+var multiplyArray = function(myArr){
+  var accumulator = 1;
+  for (var i = 0; i < inputArray.length; i ++){
+    accumulator = multiply(accumulator, myArr[i])[0];
+  }
+  return accumulator;
+};
+
+let stringHolder = [];
+
+
+var MultiplyAnyArray = function(myArr) {
+  var multiplyArray = function(myArr){
+    var accumulator = 1;
+    console.log(accumulator);
+    for (var i = 0; i < myArr.length; i ++){
+      accumulator = multiply(accumulator, myArr[i])[0];
+      console.log(accumulator);
+      stringHolder[i] = sum(`${[i]} *  `)[0];
+      console.log(stringHolder[i]);
+    }
+    return accumulator;
+  };
+
+
+
+
+
+
+  multiplyArray(myArr);
+};
+
+var bigArr = [1,2,3,4,5,6,7,8,9];
+
+MultiplyAnyArray(bigArr)
+console.log(stringHolder);
