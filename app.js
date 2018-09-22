@@ -12,7 +12,7 @@
 
 // only have an if statement, ignore the else if, else conditions, and safely assume if their guess does not pass the if statement, it's not there...
 
-
+var x = 1;
 
 var State = function (name, message) {
   this.name = name;
@@ -39,7 +39,7 @@ var guesser = function () {
 let returnedState;
 let modifiedStatesBeen = statesBeen;
 let indexOfCorrectGuess;
-let correctGuessAmount = [];
+let correctGuessAmount = 0;
 let correctStateGuess = [];
 
 var tries = 6;
@@ -88,6 +88,10 @@ var stateGuesser = function(){
 // while(tries > 0){
 // stateGuesser();    
 // }
+
+
+
+
 
 
 
