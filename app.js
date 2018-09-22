@@ -6,15 +6,17 @@ var globalCorrectArray = [];
 
 //---------------------- Country Constructor -----------------------------------
 
-var CountryObj = function(country, correctAnswer, hint,img) {
+var CountryObj = function(country, correctAnswer, hint, img) {
   // ----borrowed code (!new.target) throw ... -----
   if(!new.target) throw 'CountryObj must be called with new';
   this.country = country;
   this.correctAnswer = correctAnswer;
   this.success = false;
   this.hint = hint;
-  this.correctArray = [];
-  this.img = img;
+  this.space = '';
+  //   this.div = document.createElement(`div${this.country}`);
+  //this local div will get appended to the main div.
+
   globalCorrectArray.push(this.correctArray);
 };
 
@@ -92,7 +94,6 @@ CountryObj.prototype.elseif = function (askAgain){
 CountryObj.prototype.truthTest = function(asked) {
   if (asked === this.correctAnswer){
     this.success = true;
-    this.correctArray.push(true);
     alert(this.success);
     return true;
   }
@@ -103,7 +104,6 @@ CountryObj.prototype.truthTest = function(asked) {
   if (asked === this.correctAnswer){
     console.log('this is this.correctAnswer if it equesls asked ::: ', this.correctAnswer, 'passes ::: true');
     this.success = true;
-    this.correctArray.push(true);
     alert(this.success);
     return true;
   }
@@ -119,11 +119,14 @@ CountryObj.prototype.truthTest = function(asked) {
   }
 };
 
-var germanCountry = new CountryObj('germany', 'no', 'ive only been to one European country', 'https://www.unquote.com/IMG/254/14254/changing-german-landscape-580x358.jpg?1493711556' );
-var canadaCountry = new CountryObj('canada', 'yes','Im from Americas Canada, so...', 'https://www.hipsthetic.com/wp-content/uploads/2016/01/Royalty-Free-Winter-Landscape-Freeographs.jpg');
-var brazilCountry = new CountryObj('brazil', 'yes', 'Rio has tons of beauty and squalor', 'http://s3.travel.india.com/wp-content/uploads/2016/08/rio-de-janeiro1.jpg');
-var franceCountry = new CountryObj('france', 'yes', 'their southern coast sure is amazing','https://upload.wikimedia.org/wikipedia/commons/6/62/Paysage_Dordogne_Domme.jpg');
-var unitedArabEmirates = new CountryObj('United Arab Emirates', 'yes', 'who learns to snowboard in the desert?! An absurd idea!', 'https://s3.eu-central-1.amazonaws.com/locationscoutnet/images/2018-02/sheikh-zayed-grand-mosque-abu-dhabi-united-arab-emirates-cypo_l.jpeg');
+
+
+var germanCountry = new CountryObj('germany', 'no', 'ive only been to one European country');
+
+var canadaCountry = new CountryObj('canada', 'yes','Im from Americas Canada, so...');
+var brazilCountry = new CountryObj('brazil', 'yes', 'Rio has tons of beauty and squalor');
+var franceCountry = new CountryObj('france', 'yes', 'their southern coast sure is amazing');
+var unitedArabEmirates = new CountryObj('United Arab Emirates', 'yes', 'who learns to snowboard in the desert?! An absurd idea!');
 
 // all countries array
 var allcountries = [germanCountry, canadaCountry, brazilCountry, franceCountry, unitedArabEmirates];
@@ -142,23 +145,31 @@ var successChecker = function(){
   for (var i = 0; i < allcountries.length; i ++){
     if(allcountries[i].success === true){
       correctOnes.push(true, allcountries[i].country);
-      console.log(allcountries[i].country, 'this one was guessed succesfully');
     }
   }
 };
 
 var divTargetter = document.getElementById('mainDiv');
 
+
+var caller = function(){
+  for (var i = 0; i < allcountries.length; i ++){
+    allcountries[i].truthTest();
+  }
+
+
+};
+
 // var refresher = function(){
 //   console.log(divTargetter);
 
 //   var firstElement = document.createElement('li');
-//   firstElement.textContent = germanCountry.country;
+//   firstElement.innerHTML = germanCountry.country;
 //   console.log(firstElement);
 //   divTargetter.appendChild(firstElement);
 
 //   var secondElement = document.createElement('li');
-//   secondElement.textContent = germanCountry.success;
+//   secondElement.innerHTML = germanCountry.success;
 //   console.log(secondElement);
 //   divTargetter.appendChild(secondElement);
 // };
@@ -174,13 +185,13 @@ var divTargetter = document.getElementById('mainDiv');
 
 
 
-// creates a bunch of lis for [i] and puts [i] in them to display to the screen. 
+// creates a bunch of lis for [i] and puts [i] in them to display to the screen.
 //automater works...
 // var createElementArray =[];
 // var automater = function (){
 //   for(var i = 0; i < 20; i++){
 //     createElementArray[i] = document.createElement('li');
-//     createElementArray[i].textContent = [i];
+//     createElementArray[i].innerHTML = [i];
 //     console.log(createElementArray[i]);
 //     divTargetter.appendChild(createElementArray[i]);
 //   }
@@ -189,22 +200,78 @@ var divTargetter = document.getElementById('mainDiv');
 
 
 // ok, very good, that works, nice, it gets the image to the screen.
-var imgPlacer = function() {
-// comment out for now the for loop, just get it to work once, first...
-// for(var i = 0; i < allcountries.length; i ++){
-var createImgEl = document.createElement('img');
-console.log(createImgEl);
-createImgEl.src = germanCountry.img;
-console.log(createImgEl);
-divTargetter.appendChild(createImgEl);
-// }
-};
-imgPlacer();
+// var imgPlacer = function() {
+// // comment out for now the for loop, just get it to work once, first...
+// // for(var i = 0; i < allcountries.length; i ++){
+// var createImgEl = document.createElement('img');
+// console.log(createImgEl);
+// createImgEl.src = germanCountry.img;
+// console.log(createImgEl);
+// divTargetter.appendChild(createImgEl);
+// // }
+// };
+// imgPlacer();
 
-// and now every country object will create its own div, hmm? 
+// and now every country object will createEl its own div, hmm?
 
 // and now time for a generalized function that will take any country and put its contents onto the screen.
 
 
 
+//what do i want to pass to diplayer?
+// acountry obj?
 
+//divTargetter is already taken care of
+
+// var Displayer = function(objCountry){
+
+//   // and createEl will get [i] behind it like this createEl[i]
+//   // Object.keys(germanCountry).length results in length 6,
+//   // so we want to iterate over this length and create an element for each, right?
+
+//   // right because hard coding like i did here is not good for generalzing
+// //    createEl.innerHTML = allcountries[0].country;
+
+//   var createEl = document.createElement('li');
+//   console.log(createEl);
+//   createEl.innerHTML = allcountries[0].country;
+//   console.log(createEl);
+//   divTargetter.appendChild(createEl);
+
+// };
+
+// Displayer(allcountries);
+
+caller();
+
+var arrOfProperties;
+
+// `<div id="${objCountry.country}"></div>`
+// divMaker.innerHTML = `id='objCountry.country'`;
+
+var singleCountryCreateEls = function(objCountry) {
+
+ var arrOfDescripts =[' "this is the country" ',' "this is the correct answer" ',' "did you guess correctly" ', ' "this is the hint" ', '']; 
+  
+  var elArray = [];
+  arrOfProperties = Object.values(objCountry);
+
+  for (var i = 0; i < Object.keys(objCountry).length; i++){
+    elArray[i] = document.createElement('li');
+    //if statement that catches if an img is being passed, if it is, don't push it as an li, push it as an img.
+    //so yes that creates the right amount of Els, what is the best way to manage them? A simple array huh?
+    elArray[i].innerHTML = arrOfDescripts[i] + arrOfProperties[i];
+    divTargetter.appendChild(elArray[i]);
+  }
+};
+
+singleCountryCreateEls(germanCountry);
+singleCountryCreateEls(canadaCountry);
+singleCountryCreateEls(brazilCountry);
+singleCountryCreateEls(franceCountry);
+singleCountryCreateEls(unitedArabEmirates);
+
+
+// 2 questions
+// having each country get its own div
+// including a string description for value for each country
