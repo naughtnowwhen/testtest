@@ -51,43 +51,32 @@ var stringMult;
 // ------------------------sumAndMultiply()------------------------------------
 
 
-// sumAndMultiply = function(numA,numB,numC) {
-// myArr = [];
-// sumOfFirst2 = sum(numA,numB)[0];
-// sumOfThird = sum(numC,0)[0];
-// sumOfAll = sum(sumOfFirst2,sumOfThird)[0];
-// myArr.push(sumOfAll);
+sumAndMultiply = function(numA,numB,numC) {
+myArr = [];
+sumOfFirst2 = sum(numA,numB)[0];
+sumOfThird = sum(numC,0)[0];
+sumOfAll = sum(sumOfFirst2,sumOfThird)[0];
+myArr.push(sumOfAll);
 
-// multOfFirst2 = multiply(numA,numB)[0];
-// multOfThird = multiply(numC,1)[0];
-// multOfAll = multiply(multOfFirst2,multOfThird)[0];
-// myArr.push(multOfAll);
+multOfFirst2 = multiply(numA,numB)[0];
+multOfThird = multiply(numC,1)[0];
+multOfAll = multiply(multOfFirst2,multOfThird)[0];
+myArr.push(multOfAll);
 
-// stringSum = `${numA} and ${numB} and ${numC} sum to ${sumOfAll}.`;
-// myArr.push(stringSum);
+stringSum = `${numA} and ${numB} and ${numC} sum to ${sumOfAll}.`;
+myArr.push(stringSum);
 
-// stringMult = `The product of ${numA} and ${numB} and ${numC} is ${multOfAll}.`;
-// myArr.push(stringMult);
+stringMult = `The product of ${numA} and ${numB} and ${numC} is ${multOfAll}.`;
+myArr.push(stringMult);
 
-// return myArr;
+return myArr;
 
-// };
-// sumAndMultiply(4,7,5);
+};
+sumAndMultiply(4,7,5);
 // console.log(sumOfThird);
 
 // testSumAndMultiply();
-// ----------------<<<-----sumAndMultiply()------------------------------------
-// var testArray = [2, 3, 4]; //eslint-disable-line
-// function sumArray(sumArr) { //eslint-disable-line
-//   var sumNum = 0;
-//   for (var i = 0; i < sumArr.length; i++){
 
-//     sum(sumArr[i], sumNum )[0];
-//     console.log(sumNum);
-//   }
-//   return (sumNum);
-// }
-// var x  = sumArray(testArray);
 
 var testArray = [2, 3, 4];
 var accumulator = 0;
@@ -107,21 +96,19 @@ var sumArray = function (myArr){
 
 
 //working
+
 // var sumArray = function (myArr){
-//     let counter = 0;
+//   let counter = 0;
+//   //   for (var i = 0; i <myArr.length; i++){
+//   var firstTwo = sum(myArr[0],myArr[1])[0];
+//   console.log(firstTwo, 'first two');
+//   var secondTwo = sum(myArr[2],0)[0];
+//   var allTogetherNow = sum(firstTwo,secondTwo)[0];
+//   console.log(allTogetherNow, 'alltogethernow');
+//   //   }
+//   countedSum.push(counter);
 
-//     console.log(myArr, myArr.length, 'myArr');
-
-//     //   for (var i = 0; i <myArr.length; i++){
-//     var firstTwo = sum(myArr[0],myArr[1])[0];
-//     console.log(firstTwo, 'first two');
-//     var secondTwo = sum(myArr[2],0)[0];
-//     var allTogetherNow = sum(firstTwo,secondTwo)[0];
-//     console.log(allTogetherNow, 'alltogethernow');
-//     //   }
-//     countedSum.push(counter);
-
-//   };
+// };
 
 // var testArray = [2, 3, 4];
 // var accumulator = 0;
@@ -149,12 +136,12 @@ let stringHolder = [];
 var MultiplyAnyArray = function(myArr) {
   var multiplyArray = function(myArr){
     var accumulator = 1;
-    console.log(accumulator);
+    // console.log(accumulator);
     for (var i = 0; i < myArr.length; i ++){
       accumulator = multiply(accumulator, myArr[i])[0];
-      console.log(accumulator);
+      //   console.log(accumulator);
       stringHolder[i] = sum(`${[i]} *  `)[0];
-      console.log(stringHolder[i]);
+    //   console.log(stringHolder[i]);
     }
     return accumulator;
   };
@@ -169,5 +156,5 @@ var MultiplyAnyArray = function(myArr) {
 
 var bigArr = [1,2,3,4,5,6,7,8,9];
 
-MultiplyAnyArray(bigArr)
-console.log(stringHolder);
+MultiplyAnyArray(bigArr);
+// console.log(stringHolder);
