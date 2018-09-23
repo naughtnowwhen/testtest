@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 
 
@@ -405,17 +405,80 @@ while(tries > 0 && modifiedStatesBeen.length > 0){
 
 
 
+quiz = function(){
+  var right = false;
+  var dec = 4;
+
+  var userName;
+  var num;
+  var guess;
+
+  userGuess = function(){
+   takeAGuess = parseInt(prompt('guess a number between 1 and 10'));;
+    return takeAGuess;
+  };
+
+
+  numPicker = function(){
+    num = (Math.floor(Math.random() * 10));
+    return num;
+  };
+
+  num = numPicker();
+
+  var iffer = function(guess) {
+    dec --;
+    console.log(dec, 'dec');
+    if(dec <= 0){
+      alert('sorry too many tries');
+      return false;
+    }
+
+
+    guess = userGuess();
+    console.log(num);
+
+    if (num === guess) {
+      alert('that is right');
+      right = true;
+      console.log(right);
+    }
+
+    else if (num!==guess){
+      elseif(guess);
+    }
+
+    // else
+    // alert('show up');
+
+  };
+
+  elseif = function (guess){
+    console.log(guess);
+
+    if (guess > num){
+      alert('its high');
+      iffer();
+    }
+
+    else if (guess < num){
+      alert('its low');
+      iffer();
+    }
+  };
+  iffer();
+};
+quiz();
+
+
+
+
+// // comment back in caller()
 
 
 
 
 
-// comment back in caller()
 
-
-
-
-
-
-//that's right! the trouble with iterating over a whole array of stuff and asking target !== possibilites, there's going to be a lot of mess, because target is bound to not be at many indexes, which will return unwanted.
+// //that's right! the trouble with iterating over a whole array of stuff and asking target !== possibilites, there's going to be a lot of mess, because target is bound to not be at many indexes, which will return unwanted.
 
