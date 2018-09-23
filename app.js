@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 //realized that negative condition for the else condition in my stateguess is going to run into trouble because there are many instances when [i] !== guess which will result in the else condition, even when true at another index. the iterating 'if' is overly focused, only at that one index and is blind to the other indexes...
 
@@ -29,6 +29,12 @@ var fl = new State('fl', 'too hot and flat for me');
 var statesBeen= [wa, ca, nv, or, fl];
 // console.log(statesBeen, 'statesbeen', 'that works');
 
+let returnedState;
+let modifiedStatesBeen = statesBeen;
+let indexOfCorrectGuess;
+let correctGuessAmount = 0;
+let correctStateGuess = [];
+let totalWrong = [];
 
 var guesser = function () {
   let guessStore = prompt('take a guess');
@@ -36,11 +42,7 @@ var guesser = function () {
 };
 
 
-let returnedState;
-let modifiedStatesBeen = statesBeen;
-let indexOfCorrectGuess;
-let correctGuessAmount = 0;
-let correctStateGuess = [];
+
 
 var tries = 6;
 
@@ -52,6 +54,9 @@ var stateGuesser = function(){
   if (tries <= 0){
     alert ('no guesses left');
     return false;
+  }
+  if(modifiedStatesBeen.length <= 0){
+
   }
   let hasFound = false;
   let guess = guesser();
@@ -68,7 +73,7 @@ var stateGuesser = function(){
       hasFound = true;
       indexOfCorrectGuess = [i];
       returnedState = modifiedStatesBeen[i];
-      correctStateGuess.push(returnedState);
+      correctStateGuess.push(returnedState.name);
       correctGuessAmount++;
       modifiedStatesBeen.splice(indexOfCorrectGuess, 1);
     }
@@ -85,9 +90,33 @@ var stateGuesser = function(){
 };
 // --------------<<<------------ stateGuesser()---------------------------------------
 
-// while(tries > 0){
-// stateGuesser();    
-// }
+
+
+var gameOver = function(){
+  var wrong = [];
+  for(var i = 0; i < modifiedStatesBeen.length; i ++){
+    wrong.push(modifiedStatesBeen[i].name);
+  }
+
+  for (var i = 0; i < correctStateGuess; i ++){
+    console.log(correctStateGuess[i].name);
+
+  }
+
+  alert(`thank you for playing, your total state guesses = ${correctGuessAmount}, your correct state guesses were : ${correctStateGuess} the ones you didn't guess were : ${wrong}`);
+
+};
+
+while(tries > 0 && modifiedStatesBeen.length > 0){
+  stateGuesser();
+  if(tries <= 0 || modifiedStatesBeen.length <= 0){
+    gameOver();
+  }
+
+}
+
+
+
 
 
 
